@@ -1,0 +1,13 @@
+cookie:
+  expiry_days: 30
+  key: random_signature_key
+  name: random_cookie_name
+credentials:
+  usernames:
+    jonas:
+      email: 123@web.de
+      name: Jonas
+      password: $2b$12$xRosc8Y8J7u3d3Q4JXwcHex.M3utremikrjeeHm1E6JF/5busMblC
+preauthorized:
+  emails:
+  - jonascw@web.de
