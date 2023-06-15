@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import random
 
 st.title("Meine Gewohnheiten")
 st.markdown("""Gewohnheiten sind automatisierte Verhaltensweisen, die erheblichen Einfluss auf unsere Gesundheit haben. 
@@ -13,11 +14,14 @@ chart_data = pd.DataFrame.from_dict(
 
 st.bar_chart(chart_data)
 
+example_habits = ["Selber kochen", "Abends meditieren", "5 Portionen Obst oder Gemüse essen", "Spazieren gehen", "Ein Buch lesen"]
+
 with st.expander("Gewohnheiten hinzufügen"):
     custom_habit = st.text_input(label="Füge eine eigene Gewohnheit hinzu")
     suggest_habit_button = st.button("Lass dir basierend auf deinen persönlichen Daten eine Gewohnheit vorschlagen")
     if suggest_habit_button:
-        st.write("Selber kochen")
+        chosen_habit = random.choice(example_habits)
+        st.write(chosen_habit)
     if st.button("Gewohnheit hinzufügen"):
         st.success("Gewohnheit wurde hinzugefügt.")
 

@@ -10,7 +10,7 @@ import os
 
 os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 
-llm = OpenAI(temperature=0.9) 
+llm = OpenAI(temperature=0.9, max_tokens=2000) 
 
 # Lifestyle tip chain
 lifestyle_tip_template = PromptTemplate(
@@ -84,7 +84,15 @@ option = st.selectbox(
 if option == 'Gib mir wissenschaftliche Tipps rundum einen gesunden Lifestyle':
     user_input = st.text_area("Was genau möchtest du wissen?", height = 100)
     send_button = st.button("Senden")
-    if send_button and user_input:
+    st.write("Beispielfragen")
+    example1 = st.button("Gebe mir Tipps für einen guten Schlaf.")
+    if example1:
+        user_input = "Gebe mir Tipps für einen guten Schlaf."
+    example2 = st.button("Welche Lebensmittel sind wissenschaftlich vorbeugend gegen Herzinfarkt?")
+    if example2:
+        user_input = "Welche Lebensmittel sind wissenschaftlich vorbeugend gegen Herzinfarkt?"
+    
+    if send_button and user_input or example1 or example2:
         with st.spinner("Hmm... lass mich kurz nachdenken..."):
             st.session_state.past.append(user_input)
             response = lifestyle_tip_chain.run(name=st.session_state.name, age=st.session_state.age, 
