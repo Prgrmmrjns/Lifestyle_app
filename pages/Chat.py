@@ -5,7 +5,7 @@ from langchain import OpenAI
 from langchain.llms import OpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
-from Home import *
+from init import *
 import os
 
 os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
@@ -41,12 +41,14 @@ pa_analysis_chain = LLMChain(llm=llm, prompt=pa_analysis_template, verbose=True)
 
 # Sleep data analysis chain
 sleep_analysis_template = PromptTemplate(
-        input_variables = ['name', 'age', 'gender', 'weight', 'sleep_duration_mean','restless_duration_mean', 'awake_mean', 'start_time_week', 'end_time_week', 'bed_time', 'sleep_duration_goal'], 
+        input_variables = ['name', 'age', 'gender', 'weight', 'sleep_duration_mean','restless_duration_mean', 'awake_mean', 
+                           'start_time_week', 'end_time_week', 'bed_time', 'sleep_duration_goal'], 
         template='''Du bist ein Chatbot mit dem Namen LiSA. Dein Ziel ist es Lifestyle Tipps zu geben. 
                     Berücksichtige dabei die soziodemographischen Daten, seine Präferenzen und die Anamnese des Users.
                     Der User hat den Namen {name}. Sein Alter ist {age} und sein Geschlecht ist {gender}.
                     Er wiegt {weight}. In den letzten Tagen hat er durchschnittlich {sleep_duration_mean} Stunden am Tag geschlafen
-                    und hatte dabei durchschnittlich {restless_duration_mean}  Minuten einen unruhigen Schlaf und war durchschnittlich {awake_mean} Minuten pro Nacht wach. 
+                    und hatte dabei durchschnittlich {restless_duration_mean}  Minuten einen unruhigen Schlaf 
+                    und war durchschnittlich {awake_mean} Minuten pro Nacht wach. 
                     Er ist zu folgenden Uhrzeiten ins Bett gegangen: {start_time_week}.
                     Er ist zu folgenden Uhrzeiten aus dem Bett aufgestanden: {end_time_week}.
                     Er hat sich als Ziel gesetzt um um {bed_time} zu schlafen und pro Nacht rund {sleep_duration_goal} Stunden zu schlafen.
@@ -105,7 +107,7 @@ elif option == 'Analysiere meine Lifestyle Daten':
             with st.spinner("Ok ich analysiere jetzt deine körperliche Aktivität"):
                 st.session_state.past.append('Analysiere meine Lifestyle Daten rundum meine Physikalische Aktivität.')
                 step_count_mean = int(np.mean(step_count_week))
-                calories_mean = int(np.mean(st.session_state.calories_week))
+                calories_mean = int(np.mean(cals_week))
                 sedentary_mean = int(np.mean(sedentary_week))
                 fat_burn_mean = int(np.mean(fat_burn_week))
                 cardio_mean = int(np.mean(cardio_week))            
