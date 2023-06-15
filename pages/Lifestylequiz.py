@@ -9,7 +9,7 @@ questions = [
     {
         "question": "Welches ist KEINE gesunde Quelle für Nahrungsfett?",
         "options": ["Avocado", "Lachs", "Natives Olivenöl extra", "Transfette"],
-        "weights": [0, 0, 1, 0]
+        "weights": [0, 0, 0, 1]
     },
     {
         "question": "Wie hoch ist die empfohlene tägliche Wassermenge für einen Erwachsenen?",
@@ -35,10 +35,11 @@ for i, question in enumerate(questions):
         answers.append(question['options'].index(answer))
 
 if st.button("Antwort senden"):
-    score = calculate_score(answers)
-    if score < 0.5:
+    st.session_state['quiz_status'] = True
+    st.session_state['quiz_score'] = calculate_score(answers)
+    if st.session_state['quiz_score'] < 0.5:
         st.write("Da ist noch viel Luft nach oben!")
-    elif score < 0.8:
+    elif st.session_state['quiz_score'] < 0.8:
         st.write("Sehr gut! Du bist auf dem besten Weg alles über einen gesunden Lifestyle zu wissen.")
     else:
         st.write("Perfekt! Du weißt alles über einen gesunden Lifestyle!")

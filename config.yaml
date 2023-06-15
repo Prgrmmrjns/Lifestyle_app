@@ -8,6 +8,10 @@ credentials:
       email: 123@web.de
       name: Jonas
       password: $2b$12$xRosc8Y8J7u3d3Q4JXwcHex.M3utremikrjeeHm1E6JF/5busMblC
+    jowo:
+      email: jwolber@ukaachen
+      name: Jonas
+      password: $2b$12$Nu.f0vkJGaiaiAbncfpIWeMxy/x82Abwg0cS0f.uMz5Zh7Lq98Q5u
 preauthorized:
   emails:
   - jonascw@web.de

@@ -15,6 +15,14 @@ def get_user_data(username):
     doc = doc_ref.get()
     data = doc.to_dict()
 
+    # Daily tasks initialization
+    if 'entered_logging_data' not in st.session_state:
+        st.session_state['entered_logging_data'] = False
+    if 'quiz_status' not in st.session_state:
+        st.session_state['quiz_status'] = False
+    if 'quiz_score' not in st.session_state:
+        st.session_state['quiz_score'] = 0
+
     # User data initialization
     if 'username' not in st.session_state:
         st.session_state['username'] = username

@@ -26,4 +26,4 @@ if save_button:
 
 st.title("Meine Meilensteine")
 st.markdown(":hiking_boot: **Wochen-Wanderer**: Lege 100000 Schritte in einer Woche zurück (Freigeschaltet am 05.05.2023)")
-st.markdown(":bear: **Schlafnasenbär**: Gehe eine ganze Woche ununterbrochen rechtzeitig zu Bett (Freigeschaltet am 08.05.2023)")
+st.markdown(":bear: **Winterschlaf**: Gehe eine ganze Woche ununterbrochen rechtzeitig zu Bett (Freigeschaltet am 08.05.2023)")
