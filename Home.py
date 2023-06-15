@@ -49,7 +49,7 @@ if authentication_status:
         st.write(f"Du hast beim heutigem Quiz {round(st.session_state['quiz_score']*100,1)}% aller Fragen richtig beantwortet.")
 
     # Meilensteine
-    st.markdown("Halte dich ran. Du bist auf dem besten Weg den Meilenstein: **🎯 Quizmaster: Absolviere das tägliche Quiz für sieben ununterbrochene Tage**")
+    st.markdown("Halte dich ran. Du bist auf dem besten Weg den Meilenstein: **🎯 Quizmaster: Absolviere das tägliche Quiz für sieben ununterbrochene Tage** zu erreichen.")
     
 elif authentication_status is False or None:
     st.error('Benutzername oder Passwort ist falsch.')
