@@ -8,7 +8,7 @@ import datetime
 def create_pa_graph():
     today = datetime.datetime.today()
     last_week_dates = [today - datetime.timedelta(days=i) for i in range(6, -1, -1)]
-    step_count_df = pd.DataFrame({"Date": last_week_dates, "Schrittmenge": step_count_week, "Kalorien":st.session_state.calories_week})
+    step_count_df = pd.DataFrame({"Date": last_week_dates, "Schrittmenge": step_count_week, "Kalorien":cals_week})
     fig = go.Figure()
     fig.add_trace(go.Bar(x=step_count_df['Date'], y=step_count_df['Schrittmenge'], name='Schrittmenge'))
     fig.add_trace(go.Scatter(x=step_count_df['Date'], y=step_count_df['Kalorien'], name='Verbrannte Kalorien', yaxis='y2', line=dict(color='red')))
@@ -52,7 +52,7 @@ if option == 'Physikalische Aktivität':
     st.markdown(f"Super! Du hast dein tägliches Schrittziel diese Woche an **{days_step_count_reached} Tagen** erreicht. Das ist ein guter Ansatz für dein Fitnessziel **{st.session_state.fitness_goal}**.")
     st.divider()
     data = {'Schrittzahl': step_count_week,
-    'Verbrannte Kalorien': st.session_state.calories_week,
+    'Verbrannte Kalorien': cals_week,
     'Passive Tätigkeiten (Min.)': sedentary_week}
     df = pd.DataFrame(data)
     st.dataframe(df)
